@@ -1,0 +1,33 @@
+schema {
+  query: Query
+  mutation : Mutation
+}
+
+type Mutation {
+  saveCustomer(id : String, firstName : String, lastName: String, accounts : [AccountsInput]) : Customer
+}
+
+input AccountsInput {
+  accountId : String
+  customerId : String
+  accountName : String
+}
+
+type Query {
+  allCustomers : [Customer]
+  customer(id: String) : Customer
+}
+
+type Customer {
+  id : String
+  firstName : String
+  lastName : String
+  accounts : [Account]
+}
+
+type Account {
+  id : String
+  name : String
+  customer : Customer
+  balance : Float
+}
